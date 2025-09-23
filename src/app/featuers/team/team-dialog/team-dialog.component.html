@@ -1,0 +1,70 @@
+<h2 mat-dialog-title>{{ data && data.team ? 'Edit Team Member' : 'Add Team Member' }}</h2>
+
+<mat-dialog-content [formGroup]="form" class="form-container">
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="form.get('name')?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Position</mat-label>
+      <input matInput formControlName="description" />
+      <mat-error *ngIf="form.get('description')?.hasError('required')">Position is required</mat-error>
+    </mat-form-field>
+  </div>
+
+    <div class="form-row">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>email</mat-label>
+      <input matInput  formControlName="email"/>
+      <mat-error *ngIf="form.get('email')?.hasError('required')">email is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>linkedIn link</mat-label>
+      <input matInput  formControlName="linkedIn"/>
+      <mat-error *ngIf="form.get('linkedIn')?.hasError('required')">linkedIn link is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>whatsapp number</mat-label>
+      <input matInput  formControlName="whatsapp"/>
+      <mat-error *ngIf="form.get('whatsapp')?.hasError('required')">whatsapp link is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Existing Images -->
+  <div class="form-row" *ngIf="existingImages.length">
+    <label>Existing Images:</label>
+    <div class="images-preview">
+      <div class="image-item" *ngFor="let img of existingImages; index as i">
+        <img [src]="getImageUrl(img)" alt="Team Image" />
+        <button mat-icon-button color="warn" (click)="removeExistingImage(i)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upload new images -->
+  <div class="form-row">
+    <label class="upload-label">
+      Upload Image:
+      <input type="file" (change)="onFileSelected($event)"  />
+    </label>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
+  

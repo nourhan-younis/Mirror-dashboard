@@ -1,0 +1,121 @@
+<h2 mat-dialog-title>{{ data.project ? 'Edit Project' : 'Add Project' }}</h2>
+
+<mat-dialog-content [formGroup]="form" class="form-container">
+
+  <!-- Name -->
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="form.get('name')?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+  </div>
+
+<!-- description (expanded) -->
+<div class="form-row">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      rows="5"
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      formControlName="description"
+      placeholder="Add a detailed project description..."
+    ></textarea>
+    <mat-hint align="end">{{ form.get('description')?.value?.length || 0 }} / 1000</mat-hint>
+    <mat-error *ngIf="form.get('description')?.hasError('required')">
+      Description is required
+    </mat-error>
+  </mat-form-field>
+</div>
+
+
+  <!-- Location -->
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location" />
+      <mat-error *ngIf="form.get('location')?.hasError('required')">Location is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Customer Name -->
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Customer Name</mat-label>
+      <input matInput formControlName="customerName" />
+      <mat-error *ngIf="form.get('customerName')?.hasError('required')">Customer name is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Project Cost -->
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Project Cost</mat-label>
+      <input matInput type="number" formControlName="projectCost" />
+      <mat-error *ngIf="form.get('projectCost')?.hasError('required')">Project cost is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Project Time -->
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Project Time</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="projectTime" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="form.get('projectTime')?.hasError('required')">Project time is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Scope Of Work -->
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Scope Of Work</mat-label>
+      <textarea matInput rows="3" formControlName="scopeOfWork"></textarea>
+      <mat-error *ngIf="form.get('scopeOfWork')?.hasError('required')">Scope of work is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Category -->
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category" required>
+        <mat-option *ngFor="let cat of categories" [value]="cat._id">{{ cat.name }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('category')?.hasError('required')">Category is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Existing Images -->
+<div class="form-row" *ngIf="existingImages.length">
+  <label>Existing Images:</label>
+  <div class="images-preview">
+    <div class="image-item" *ngFor="let img of existingImages; index as i">
+      <img [src]="getImageUrl(img)" alt="Project Image" />
+      <button mat-icon-button color="warn" (click)="removeExistingImage(i)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+  <!-- Upload new images -->
+  <div class="form-row">
+    <label class="upload-label">
+      Upload Images:
+      <input type="file" (change)="onFileSelected($event)" multiple />
+    </label>
+  </div>
+
+
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,17 @@
+.projects-container {
+  padding: 24px;
+
+  .toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  mat-paginator {
+    margin-top: 16px;
+  }
+}

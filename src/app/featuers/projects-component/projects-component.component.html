@@ -1,0 +1,75 @@
+<div class="projects-container">
+  <div class="toolbar">
+    <button mat-raised-button color="primary" (click)="addProject()">Add Project</button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let project"> {{ project.name }} </td>
+    </ng-container>
+
+      <!-- Description -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let project"> {{ project.description }} </td>
+    </ng-container>
+
+    <!-- Location -->
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef> Location </th>
+      <td mat-cell *matCellDef="let project"> {{ project.location }} </td>
+    </ng-container>
+
+    <!-- Customer Name -->
+    <ng-container matColumnDef="customerName">
+      <th mat-header-cell *matHeaderCellDef> Customer </th>
+      <td mat-cell *matCellDef="let project"> {{ project.customerName }} </td>
+    </ng-container>
+
+    <!-- Cost -->
+    <ng-container matColumnDef="projectCost">
+      <th mat-header-cell *matHeaderCellDef> Cost </th>
+      <td mat-cell *matCellDef="let project"> ${{ project.projectCost | number }} </td>
+    </ng-container>
+
+    <!-- Time -->
+    <ng-container matColumnDef="projectTime">
+      <th mat-header-cell *matHeaderCellDef> Time </th>
+      <td mat-cell *matCellDef="let project"> {{ project.projectTime }} </td>
+    </ng-container>
+
+    <!-- Category -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef> Category </th>
+      <td mat-cell *matCellDef="let project"> {{ project.category?.name || '-' }} </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let project">
+        <button mat-icon-button color="accent" (click)="editProject(project)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteProject(project)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Table Headers and Rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [length]="total"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="pageChanged($event)">
+  </mat-paginator>
+</div>
