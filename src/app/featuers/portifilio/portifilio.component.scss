@@ -1,0 +1,48 @@
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column;
+  gap: 30px;
+
+  mat-card {
+    width: 400px;
+    padding: 24px;
+    text-align: center;
+    border-radius: 16px;
+
+    h2 {
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    button {
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    .file-name {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+      word-break: break-all;
+    }
+
+    mat-progress-bar {
+      margin-top: 15px;
+    }
+  }
+}
+.pdf-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.pdf-link:hover {
+  text-decoration: underline;
+}

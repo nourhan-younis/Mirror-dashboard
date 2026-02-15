@@ -1,0 +1,50 @@
+<div class="upload-container">
+
+  <mat-card>
+
+    <h2>Upload Portfolio PDF</h2>
+
+    <input type="file" (change)="onFileSelected($event)" accept=".pdf" hidden #fileInput>
+
+    <button mat-raised-button color="primary" (click)="fileInput.click()">
+      Select PDF
+    </button>
+
+    <p *ngIf="fileName" class="file-name">
+      Selected: {{ fileName }}
+    </p>
+
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="uploadFile()"
+      [disabled]="!selectedFile || isUploading">
+
+      Upload
+    </button>
+
+    <mat-progress-bar
+      *ngIf="isUploading"
+      mode="determinate"
+      [value]="uploadProgress">
+    </mat-progress-bar>
+
+  </mat-card>
+  <div *ngIf="portfolioLink" class="preview">
+
+  <h3>Current Portfolio</h3>
+
+  <a
+    [href]="portfolioLink"
+    target="_blank"
+    class="pdf-link">
+
+    📄 {{ portfolioTitle }}
+
+  </a>
+
+</div>
+</div>
+
+
+

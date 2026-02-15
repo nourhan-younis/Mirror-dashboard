@@ -9,6 +9,7 @@ import { MessagesComponent } from './featuers/messages/messages.component';
 import { VideoUploadComponent } from './featuers/video-upload/video-upload.component';
 import { TeamMemberTableComponent } from './featuers/team/team.component';
 import { CommentTableComponent } from './featuers/comments/comment.component';
+import { PortifilioComponent } from './featuers/portifilio/portifilio.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,17 +18,16 @@ export const routes: Routes = [
     component: DashboardLayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'projects', component: ProjectsComponent},
-      { path: 'categories', component  : CategoriesComponent},
-      { path: 'admins', component  : AdminsComponent},
-      { path: 'messages', component  : MessagesComponent},
-      { path: 'Video', component  : VideoUploadComponent},
-      { path: 'team', component  : TeamMemberTableComponent},
-      { path: 'comments', component  : CommentTableComponent},
+      { path: 'projects', component: ProjectsComponent },
+      { path: 'categories', component: CategoriesComponent },
+      { path: 'admins', component: AdminsComponent },
+      { path: 'messages', component: MessagesComponent },
+      { path: 'Video', component: VideoUploadComponent },
+      { path: 'team', component: TeamMemberTableComponent },
+      { path: 'comments', component: CommentTableComponent },
+      { path: 'portifilio', component: PortifilioComponent },
       { path: '', redirectTo: 'projects', pathMatch: 'full' },
     ],
   },
   { path: '**', redirectTo: 'login' },
 ];
-
-
