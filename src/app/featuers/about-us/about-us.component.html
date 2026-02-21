@@ -1,0 +1,76 @@
+<div class="about-admin-container max-w-6xl mx-auto p-6">
+
+  <h2 class="text-2xl font-bold mb-6 text-center">Manage About Us Content</h2>
+
+  <form [formGroup]="aboutForm" (ngSubmit)="save()" class="space-y-6">
+
+    <!-- Heading & Subheading -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Heading</mat-label>
+        <input matInput formControlName="heading" placeholder="Main heading" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Subheading</mat-label>
+        <input matInput formControlName="subHeading" placeholder="Optional subheading" />
+      </mat-form-field>
+    </div>
+
+    <!-- Short Text & Full Text -->
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Full Text</mat-label>
+      <textarea matInput formControlName="fullText" rows="6" placeholder="Full description"></textarea>
+    </mat-form-field>
+
+ 
+
+    <!-- Image Upload -->
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <div class="w-full md:w-1/2">
+        <label class="block font-medium mb-4">Upload Image</label>
+        <input type="file" (change)="onImageSelected($event)" class="block w-full text-sm text-gray-700 border rounded-md p-2" />
+      </div>
+      <div class="w-full md:w-1/2 flex justify-center mt-5" style="margin-top: 10px;">
+       <img
+          *ngIf="previewImg"
+          [src]="getImageSrc()"
+          class="h-40 object-cover rounded-lg shadow-md border"
+        />
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div>
+      <h3 class="text-lg font-semibold mb-3">Stats</h3>
+      <div formArrayName="stats" class="space-y-3">
+        <div *ngFor="let stat of stats.controls; let i=index" [formGroupName]="i" class="flex items-center gap-3" style="margin-bottom: 10px;">
+          <mat-form-field appearance="outline" class="flex-1" style="margin-bottom: 5px;">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" placeholder="e.g. Projects Completed" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="w-32">
+            <mat-label>Value</mat-label>
+            <input matInput type="number" formControlName="value" placeholder="e.g. 135" />
+          </mat-form-field>
+          <button mat-icon-button color="warn" type="button" (click)="removeStat(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <button mat-stroked-button color="primary" type="button" (click)="addStat()" class="mt-2">
+        Add Stat
+      </button>
+    </div>
+
+    <!-- Save Button -->
+    <div class="text-center mt-6" style="margin-top: 10px; cursor: pointer;">
+      <button mat-raised-button color="primary" type="submit" [disabled]="aboutForm.invalid">
+        Save Content
+      </button>
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,31 @@
+.about-admin-container {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+  h2 {
+    color: #1a1a1a;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    transition: 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    border-radius: 12px;
+    max-height: 200px;
+  }
+}

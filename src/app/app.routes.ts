@@ -11,6 +11,7 @@ import { TeamMemberTableComponent } from './featuers/team/team.component';
 import { CommentTableComponent } from './featuers/comments/comment.component';
 import { PortifilioComponent } from './featuers/portifilio/portifilio.component';
 import { OurClientsComponent } from './featuers/our-clients/our-clients.component';
+import { AboutUsComponent } from './featuers/about-us/about-us.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,6 +29,7 @@ export const routes: Routes = [
       { path: 'comments', component: CommentTableComponent },
       { path: 'portifilio', component: PortifilioComponent },
       { path: 'our-clients', component: OurClientsComponent },
+      { path: 'about-us', component: AboutUsComponent },
       { path: '', redirectTo: 'projects', pathMatch: 'full' },
     ],
   },
