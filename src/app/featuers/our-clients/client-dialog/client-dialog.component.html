@@ -1,0 +1,52 @@
+<section style="padding: 30px;">
+    <h2 mat-dialog-title class="dialog-title">
+  <mat-icon>business</mat-icon>
+  Add Client
+</h2>
+
+<div mat-dialog-content class="dialog-content">
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Client Name</mat-label>
+    <input matInput [(ngModel)]="name" />
+  </mat-form-field>
+
+  <!-- Upload Button -->
+ <div class="upload-section">
+  <button
+    mat-stroked-button
+    color="primary"
+    type="button"
+    (click)="fileInput.click()"
+  >
+    <mat-icon>upload</mat-icon>
+    Upload Logo
+  </button>
+
+  <input
+    #fileInput
+    type="file"
+    hidden
+    (change)="onFileChange($event)"
+  />
+</div>
+
+  <!-- Image Preview -->
+  <div *ngIf="preview" class="preview-container">
+    <img [src]="preview" alt="Preview" />
+  </div>
+
+</div>
+
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button (click)="close()">Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="save()"
+    [disabled]="!name || !selectedFile"
+  >
+    Save Client
+  </button>
+</div>
+</section>

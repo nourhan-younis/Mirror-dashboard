@@ -10,6 +10,7 @@ import { VideoUploadComponent } from './featuers/video-upload/video-upload.compo
 import { TeamMemberTableComponent } from './featuers/team/team.component';
 import { CommentTableComponent } from './featuers/comments/comment.component';
 import { PortifilioComponent } from './featuers/portifilio/portifilio.component';
+import { OurClientsComponent } from './featuers/our-clients/our-clients.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,6 +27,7 @@ export const routes: Routes = [
       { path: 'team', component: TeamMemberTableComponent },
       { path: 'comments', component: CommentTableComponent },
       { path: 'portifilio', component: PortifilioComponent },
+      { path: 'our-clients', component: OurClientsComponent },
       { path: '', redirectTo: 'projects', pathMatch: 'full' },
     ],
   },

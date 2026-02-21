@@ -1,0 +1,43 @@
+<div class="clients-container">
+  <div class="toolbar">
+    <button mat-raised-button color="primary" (click)="addClient()">
+      Add Client
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="clients" class="mat-elevation-z8">
+
+    <!-- Logo -->
+    <ng-container matColumnDef="logo">
+      <th mat-header-cell *matHeaderCellDef> Logo </th>
+      <td mat-cell *matCellDef="let client" style="padding: 20px 0;">
+        <img
+          [src]="imageBase + client.logo"
+          width="80"
+          style="object-fit: contain;"
+        />
+      </td>
+    </ng-container>
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let client">
+        {{ client.name }}
+      </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let client">
+        <button mat-icon-button color="warn" (click)="deleteClient(client)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

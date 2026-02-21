@@ -1,0 +1,43 @@
+.dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 10px;
+  min-width: 40%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.upload-section {
+  display: flex;
+  justify-content: center;
+}
+
+.preview-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.preview-container img {
+  max-width: 150px;
+  max-height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 6px;
+  background: #fafafa;
+}
+
+.dialog-actions {
+  padding-top: 10px;
+}
