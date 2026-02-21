@@ -12,6 +12,7 @@ import { CommentTableComponent } from './featuers/comments/comment.component';
 import { PortifilioComponent } from './featuers/portifilio/portifilio.component';
 import { OurClientsComponent } from './featuers/our-clients/our-clients.component';
 import { AboutUsComponent } from './featuers/about-us/about-us.component';
+import { HowWeWorkComponent } from './featuers/how-we-work/how-we-work.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,6 +31,7 @@ export const routes: Routes = [
       { path: 'portifilio', component: PortifilioComponent },
       { path: 'our-clients', component: OurClientsComponent },
       { path: 'about-us', component: AboutUsComponent },
+      { path: 'how-we-work', component: HowWeWorkComponent },
       { path: '', redirectTo: 'projects', pathMatch: 'full' },
     ],
   },

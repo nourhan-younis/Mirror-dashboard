@@ -1,0 +1,125 @@
+<div class="max-w-6xl mx-auto px-6 py-10">
+
+  <!-- Page Header -->
+  <div class="mb-10 text-center">
+    <h2 class="text-3xl font-bold tracking-tight">
+      Manage How We Work
+    </h2>
+    <p class="text-gray-500 mt-2">
+      Update the workflow steps displayed on the website.
+    </p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="space-y-10">
+
+    <!-- ================= HEADER SECTION ================= -->
+    <div class="bg-white rounded-2xl shadow-md p-8 border">
+      <h3 class="text-xl font-semibold mb-6 border-b pb-3">
+        Section Information
+      </h3>
+
+      <div class="space-y-6">
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Heading</mat-label>
+          <input matInput formControlName="heading" placeholder="Page heading" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            rows="5"
+            formControlName="description"
+            placeholder="Main section description"
+          ></textarea>
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <!-- ================= STEPS SECTION ================= -->
+    <div class="bg-white rounded-2xl shadow-md p-8 border">
+
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-semibold">
+          Workflow Steps
+        </h3>
+
+        <button
+          mat-stroked-button
+          color="primary"
+          type="button"
+          (click)="addStep()"
+        >
+          + Add Step
+        </button>
+      </div>
+
+      <div formArrayName="steps" class="space-y-6">
+
+        <div
+          *ngFor="let step of steps.controls; let i = index"
+          [formGroupName]="i"
+          class="relative bg-gray-50 border rounded-xl p-6 hover:shadow-md transition"
+        >
+
+          <!-- Step Badge -->
+          <div class="absolute -top-4 left-6 bg-primary text-white text-sm font-semibold px-3 py-1 rounded-full shadow">
+            Step {{ i + 1 }}
+          </div>
+
+          <!-- Delete Button -->
+          <button
+            mat-icon-button
+            color="warn"
+            type="button"
+            (click)="removeStep(i)"
+            class="absolute top-3 right-3"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+
+          <div class="grid md:grid-cols-3 gap-6 mt-4">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Number</mat-label>
+              <input matInput formControlName="number" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="md:col-span-2">
+              <mat-label>Title</mat-label>
+              <input matInput formControlName="title" />
+            </mat-form-field>
+
+          </div>
+
+          <mat-form-field appearance="outline" class="w-full mt-6">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              rows="4"
+              formControlName="description"
+            ></textarea>
+          </mat-form-field>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= SAVE BUTTON ================= -->
+    <div class="sticky bottom-0 bg-white py-4 border-t text-center shadow-inner">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="px-10 py-2 text-base"
+        [disabled]="form.invalid"
+      >
+        Save Changes
+      </button>
+    </div>
+
+  </form>
+</div>
