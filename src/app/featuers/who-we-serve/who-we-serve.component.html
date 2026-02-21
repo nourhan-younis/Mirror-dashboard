@@ -1,0 +1,65 @@
+<div class="max-w-6xl mx-auto p-8 bg-white rounded-3xl shadow-xl">
+
+  <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">
+    Manage Who We Serve
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="space-y-8">
+
+    <!-- Header -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Header</mat-label>
+      <input matInput formControlName="header" placeholder="Page Header" />
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="4" formControlName="description" placeholder="Main description"></textarea>
+    </mat-form-field>
+
+    <!-- Items Section -->
+    <div>
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-semibold text-gray-700">Service Categories</h3>
+        <button mat-flat-button color="primary" type="button" (click)="addItem()">
+          Add Item
+        </button>
+      </div>
+
+      <div formArrayName="items" class="space-y-6">
+        <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i"
+          class="border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition bg-gray-50">
+
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-semibold text-gray-600">Item {{ i + 1 }}</h4>
+            <button mat-icon-button color="warn" type="button" (click)="removeItem(i)" *ngIf="items.length > 1">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Title</mat-label>
+              <input matInput formControlName="title" placeholder="Client type" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full md:col-span-2">
+              <mat-label>Description</mat-label>
+              <textarea matInput rows="3" formControlName="description" placeholder="Description"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <div class="text-center p-6" style="margin-top: 30px;">
+      <button mat-raised-button color="primary" type="submit" class="px-10 py-3 text-lg rounded-full"
+        [disabled]="form.invalid || loading">
+        {{ loading ? 'Saving...' : 'Save Changes' }}
+      </button>
+    </div>
+
+  </form>
+</div>

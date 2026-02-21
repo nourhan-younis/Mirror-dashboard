@@ -13,6 +13,7 @@ import { PortifilioComponent } from './featuers/portifilio/portifilio.component'
 import { OurClientsComponent } from './featuers/our-clients/our-clients.component';
 import { AboutUsComponent } from './featuers/about-us/about-us.component';
 import { HowWeWorkComponent } from './featuers/how-we-work/how-we-work.component';
+import { ManageWhoWeServeComponent } from './featuers/who-we-serve/who-we-serve.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -32,6 +33,7 @@ export const routes: Routes = [
       { path: 'our-clients', component: OurClientsComponent },
       { path: 'about-us', component: AboutUsComponent },
       { path: 'how-we-work', component: HowWeWorkComponent },
+      { path: 'who-we-serve', component: ManageWhoWeServeComponent },
       { path: '', redirectTo: 'projects', pathMatch: 'full' },
     ],
   },
